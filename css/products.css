@@ -16,9 +16,12 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 220%;
   z-index: -2;
-  background: url('images/rubber-tree-bowl-filled-with-latex.jpg') center/cover no-repeat;
+  background: url('../images/rubber-tree-4010781.jpg') center/cover no-repeat;
+  transform: translateY(0);
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
 }
 
 .dimmed-overlay {

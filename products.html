@@ -13,7 +13,7 @@
 
 </head>
 
-<body style="background-image: url(images/rubber-tree-bowl-filled-with-latex.jpg);">
+<body>
     <nav class="navbar">
         <div class="logo">
             <div class="logo-icon">NGKL</div>
@@ -360,6 +360,14 @@
             }
         });
     </script>
+    <script>
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const bg = document.querySelector('.dimmed-background');
+  bg.style.transform = `translateY(${-scrolled * 0.3}px)`;
+});
+</script>
+
 </body>
 
 </html>
