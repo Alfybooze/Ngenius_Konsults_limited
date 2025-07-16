@@ -1,5 +1,6 @@
 <!Doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,32 +12,34 @@
     <title>Products</title>
 
 </head>
-<body>
-   <nav class="navbar">
+
+<body style="background-image: url(images/rubber-tree-bowl-filled-with-latex.jpg);">
+    <nav class="navbar">
         <div class="logo">
             <div class="logo-icon">NGKL</div>
             <span>NGENIUS KONSULTS LIMITED</span>
         </div>
-        
+
         <!-- Mobile menu button -->
         <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </button>
-        
+
         <div class="nav-links" id="navLinks">
-            <a href="index.html" >Home</a>
+            <a href="index.html">Home</a>
             <a href="products.html" class="active">Products</a>
             <a href="#">Applications</a>
             <a href="#">About Us</a>
-            
-            
+
+
             <!-- Auth button moved inside nav-links for mobile view -->
             <div class="auth-buttons">
                 <a href="#" class="sign-up">Contact us</a>
             </div>
         </div>
     </nav>
-
+    <div class="dimmed-background"></div>
+    <div class="dimmed-overlay"></div>
     <div class="product-filters">
         <div class="filter-buttons">
             <button class="filter-button active" data-filter="all">All Products</button>
@@ -48,7 +51,10 @@
     </div>
 
     <div class="products-container">
-        <div class="products-grid">
+        <div class="heading">
+            <h1 class="product_heading">Our products and services include</h1>
+        </div>
+        <div class="products-grid" style="margin-top:50px;">
             <!-- Product cards will be dynamically populated here -->
         </div>
     </div>
@@ -86,7 +92,9 @@
             </div>
         </div>
     </div>
-
+    <div class="write_up">
+        <div class="write"><p><i>With our cutting edge professionals, staffs and tools, you can be rest assured that our services and products are among if not the best</i></p></div>
+    </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         // Initialize AOS
@@ -250,10 +258,10 @@
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const filter = button.dataset.filter;
-                
+
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
+
                 document.querySelectorAll('.product-card').forEach(card => {
                     if (filter === 'all' || card.dataset.category.includes(filter)) {
                         card.style.display = 'block';
@@ -274,13 +282,13 @@
             document.getElementById('modalCategory').textContent = product.category;
             document.getElementById('modalDescription').innerHTML = `<p>${product.description}</p>`;
             document.getElementById('modalProductImage').src = product.image;
-            
+
             const featuresList = document.getElementById('modalFeatures');
             featuresList.innerHTML = product.features.map(feature => `<li>${feature}</li>`).join('');
-            
+
             const applicationsList = document.getElementById('modalApplications');
             applicationsList.innerHTML = product.applications.map(app => `<li>${app}</li>`).join('');
-            
+
             document.getElementById('productModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -309,10 +317,10 @@
         let scrollTimer;
         window.addEventListener('scroll', () => {
             if (scrollTimer) return;
-            
+
             scrollTimer = setTimeout(() => {
                 const currentScroll = window.pageYOffset;
-                
+
                 if (Math.abs(currentScroll - lastScroll) > 5) {
                     if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
                         if (!isHidden) {
@@ -327,10 +335,10 @@
                             isHidden = false;
                         }
                     }
-                    
+
                     lastScroll = currentScroll;
                 }
-                
+
                 scrollTimer = null;
             }, 50);
         });
@@ -341,7 +349,7 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            
+
             const icon = mobileMenuBtn.querySelector('i');
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
@@ -353,4 +361,5 @@
         });
     </script>
 </body>
+
 </html>

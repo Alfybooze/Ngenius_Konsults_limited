@@ -1,13 +1,39 @@
 /* Main products grid layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
+.dimmed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: url('images/rubber-tree-bowl-filled-with-latex.jpg') center/cover no-repeat;
+}
+
+.dimmed-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .products-container {
     padding: 140px 5% 60px;
-    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    background: transparent;
 }
 
 .products-grid {
@@ -310,4 +336,31 @@ body {
         text-align: center;
     }
 }
+.heading{
+    width: 90%;
+    margin: auto;
+}
+.product_heading {
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 40px;
+    font-weight: 700;
+    border-bottom: 2px solid #e7a83c;
+}
+.write_up {
+    width: 100vw;
+    .write{
+        width: 80%;
+        margin: auto;
+    p{
+        text-align: center;
+    }
+    }
+    margin: auto;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 20px;
+    background-color: white;
 
+}
