@@ -1,0 +1,357 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\index.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Adding Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/products.css">
+    <script src="js/mobile_menu.js"></script>
+    <title>Products</title>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">NGKL</div>
+            <span>NGENIUS KONSULTS LIMITED</span>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="#">Applications</a>
+            <a href="#">About Us</a>
+
+
+            <!-- Auth button moved inside nav-links for mobile view -->
+            <div class="auth-buttons">
+                <a href="#" class="sign-up">Contact us</a>
+            </div>
+        </div>
+    </nav>
+    <div class="dimmed-background"></div>
+    <div class="dimmed-overlay"></div>
+    <div class="product-filters">
+        <div class="filter-buttons">
+            <button class="filter-button active" data-filter="all">All Products</button>
+            <button class="filter-button" data-filter="safety">Safety Equipment</button>
+            <button class="filter-button" data-filter="industrial">Industrial Parts</button>
+            <button class="filter-button" data-filter="custom">Custom Solutions</button>
+            <button class="filter-button" data-filter="other">Other Products</button>
+        </div>
+    </div>
+
+    <div class="products-container">
+        <div class="heading">
+            <h1 class="product_heading">Our products and services include</h1>
+        </div>
+        <div class="products-grid" style="margin-top:50px;">
+            <!-- Product cards will be dynamically populated here -->
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalProductTitle">Product Title</h2>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img src="" alt="Product" class="modal-image" id="modalProductImage">
+                </div>
+                <div class="modal-details">
+                    <h3 class="product-title" id="modalDetailTitle">Product Name</h3>
+                    <span class="product-category" id="modalCategory">Category</span>
+                    <div class="product-description" id="modalDescription"></div>
+                    <div class="product-features">
+                        <h3>Key Features</h3>
+                        <ul class="features-list" id="modalFeatures"></ul>
+                    </div>
+                    <div class="product-applications">
+                        <h3>Applications</h3>
+                        <ul class="applications-list" id="modalApplications"></ul>
+                    </div>
+                    <div class="modal-cta">
+                        <a href="https://wa.me/+2348037225914" class="modal-cta-button inquire-button">Get in touch</a>
+                        <a href="#" class="modal-cta-button catalog-button">Download Specs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="write_up">
+        <div class="write"><p><i>With our cutting edge professionals, staffs and tools, you can be rest assured that our services and products are among if not the best</i></p></div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // Updated Product Data
+        const productData = {
+            'industrial-gloves': {
+                title: 'Industrial Safety Gloves',
+                category: 'safety',
+                image: 'images/gloves.jpg',
+                description: 'Professional-grade protective gloves designed for industrial use, offering superior protection against chemicals, cuts and abrasions.',
+                features: [
+                    'Chemical resistant rubber compound',
+                    'Reinforced palm and finger areas',
+                    'Extended cuff for wrist protection',
+                    'Non-slip grip pattern',
+                    'Available in multiple sizes'
+                ],
+                applications: [
+                    'Chemical Processing',
+                    'Manufacturing',
+                    'Laboratory Work',
+                    'Oil & Gas Industry'
+                ]
+            },
+            'protective-wear': {
+                title: 'Protective Rubber Wear',
+                category: 'safety',
+                image: 'images/Protective rubber ware.jpg',
+                description: 'Complete range of protective rubber wear including aprons, boots, and suits for comprehensive protection in hazardous environments.',
+                features: [
+                    'Full-body protection designs',
+                    'Chemical splash resistance',
+                    'Flexible and comfortable fit',
+                    'Heat and cold resistant',
+                    'Easy to clean and maintain'
+                ],
+                applications: [
+                    'Chemical Plants',
+                    'Food Processing',
+                    'Mining Operations',
+                    'Waste Management'
+                ]
+            },
+            'rubber-parts': {
+                title: 'Industrial Rubber Parts',
+                category: 'industrial',
+                image: 'images/rubber artifacts.jpg',
+                description: 'Custom-manufactured rubber components for industrial machinery and equipment, engineered to precise specifications.',
+                features: [
+                    'Custom size and shape options',
+                    'High-grade rubber compounds',
+                    'Precision manufacturing',
+                    'Quality tested',
+                    'Bulk ordering available'
+                ],
+                applications: [
+                    'Machine Parts',
+                    'Automotive Components',
+                    'Industrial Equipment',
+                    'Construction Machinery'
+                ]
+            },
+            'rubber-bands': {
+                title: 'Industrial Rubber Bands',
+                category: 'industrial',
+                image: 'images/Rubber band.jpg',
+                description: 'High-quality rubber bands in various sizes and strengths for industrial and commercial applications.',
+                features: [
+                    'Multiple size options',
+                    'High tensile strength',
+                    'UV resistant',
+                    'Long service life',
+                    'Color coding available'
+                ],
+                applications: [
+                    'Packaging',
+                    'Office Use',
+                    'Industrial Bundling',
+                    'Agricultural Uses'
+                ]
+            },
+            'custom-solutions': {
+                title: 'Custom Rubber Solutions',
+                category: 'custom',
+                image: 'images/rubber products.jpg',
+                description: 'Bespoke rubber products designed and manufactured to meet specific client requirements and applications.',
+                features: [
+                    'Custom design service',
+                    'Material selection consultation',
+                    'Prototype development',
+                    'Quality assurance',
+                    'Technical support'
+                ],
+                applications: [
+                    'Specialized Industry Needs',
+                    'Unique Applications',
+                    'Product Development',
+                    'Process Optimization'
+                ]
+            },
+            'shea-butter': {
+                title: 'Shea Butter Production',
+                category: 'other',
+                image: 'images/Shea-Butter-Processing-Factory.jpg',
+                description: 'Premium quality shea butter production and processing equipment, designed for optimal extraction and refinement of natural shea butter. Our comprehensive solutions ensure high yields and superior product quality.',
+                features: [
+                    'Advanced extraction technology',
+                    'Temperature-controlled processing',
+                    'Quality control systems',
+                    'Automated production lines',
+                    'Hygienic processing environment',
+                    'Customizable capacity options'
+                ],
+                applications: [
+                    'Cosmetic Industry',
+                    'Pharmaceutical Production',
+                    'Natural Body Care',
+                    'Food Processing',
+                    'Export Quality Products',
+                    'Local Market Production'
+                ]
+            }
+        };
+
+        // Function to create product cards
+        function createProductCard(product) {
+            return `
+                <div class="product-card" data-aos="fade-up" data-aos-duration="800" data-category="${product.category.toLowerCase()}">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.title}" data-aos="zoom-in" data-aos-delay="200">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category" data-aos="fade-left" data-aos-delay="300">${product.category}</div>
+                        <h3 class="product-title" data-aos="fade-left" data-aos-delay="400">${product.title}</h3>
+                        <p class="product-description" data-aos="fade-left" data-aos-delay="500">${product.description.substring(0, 120)}...</p>
+                        <div class="product-action" data-aos="fade-up" data-aos-delay="600">
+                            <a href="#" class="view-details" data-product="${product.id}">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Populate products grid
+        const productsGrid = document.querySelector('.products-grid');
+        Object.entries(productData).forEach(([id, product]) => {
+            productsGrid.innerHTML += createProductCard({ ...product, id });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Update modal functionality
+        function openProductModal(productId) {
+            const product = productData[productId];
+            if (!product) return;
+
+            document.getElementById('modalProductTitle').textContent = product.title;
+            document.getElementById('modalDetailTitle').textContent = product.title;
+            document.getElementById('modalCategory').textContent = product.category;
+            document.getElementById('modalDescription').innerHTML = `<p>${product.description}</p>`;
+            document.getElementById('modalProductImage').src = product.image;
+
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = product.features.map(feature => `<li>${feature}</li>`).join('');
+
+            const applicationsList = document.getElementById('modalApplications');
+            applicationsList.innerHTML = product.applications.map(app => `<li>${app}</li>`).join('');
+
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Add modal event listeners
+        document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                openProductModal(e.currentTarget.dataset.product);
+            });
+        });
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Enhanced scroll functionality
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+        const productFilters = document.querySelector('.product-filters');
+        const scrollThreshold = 100;
+        let isHidden = false;
+
+        // Throttled scroll handler
+        let scrollTimer;
+        window.addEventListener('scroll', () => {
+            if (scrollTimer) return;
+
+            scrollTimer = setTimeout(() => {
+                const currentScroll = window.pageYOffset;
+
+                if (Math.abs(currentScroll - lastScroll) > 5) {
+                    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+                        if (!isHidden) {
+                            navbar.classList.add('navbar-hidden');
+                            productFilters.classList.add('filters-hidden');
+                            isHidden = true;
+                        }
+                    } else if (currentScroll < lastScroll) {
+                        if (isHidden) {
+                            navbar.classList.remove('navbar-hidden');
+                            productFilters.classList.remove('filters-hidden');
+                            isHidden = false;
+                        }
+                    }
+
+                    lastScroll = currentScroll;
+                }
+
+                scrollTimer = null;
+            }, 50);
+        });
+    </script>
+    <script>
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const bg = document.querySelector('.dimmed-background');
+  bg.style.transform = `translateY(${-scrolled * 0.3}px)`;
+});
+</script>
+
+</body>
+
+</html>
